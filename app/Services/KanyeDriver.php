@@ -18,7 +18,7 @@ class KanyeDriver implements QuoteDriverInterface
 
     public function get(): array
     {
-        return Cache::remember(self::CACHE_KEY, 120, function () {
+        return Cache::remember(self::CACHE_KEY, config('quote.cache_time_in_seconds'), function () {
             $quotes = [];
             for ($i = 0; $i < config('quote.number_of_quotes'); $i++) {
                 $quotes[] = Http::get('https://api.kanye.rest/')->json();

@@ -10,7 +10,7 @@ class QuoteController extends Controller
 {
     public function index(Request $request): JsonResponse
     {
-        if ($request->has('fresh')) {
+        if ($request->has('refresh')) {
             Quote::refresh();
         }
 

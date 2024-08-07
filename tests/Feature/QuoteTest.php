@@ -45,7 +45,7 @@ class QuoteTest extends TestCase
         Quote::shouldReceive('get')->once()->andReturn([['quote' => 'Test quote']]);
 
         $response = $this->withHeaders(['Authorization' => 'Bearer ' . $this->authToken])
-            ->getJson('/api/quotes?fresh=true');
+            ->getJson('/api/quotes?refresh=true');
         $response->assertStatus(200);
         $response->assertJson([['quote' => 'Test quote']]);
     }

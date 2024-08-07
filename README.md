@@ -15,3 +15,11 @@ cp .env.example .env
 php artisan key:generate
 php artisan migrate
 ```
+
+# Create user
+To create a user and retrieve a token run the following command:
+```bash
+php artisan app:create-user
+```
+
+Keep the token safe, you will need it to access the API.

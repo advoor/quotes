@@ -56,3 +56,17 @@ These quotes are cached for 10 minutes to prevent excessive requests to the Kany
 curl --location 'http://quotes.test/api/quotes?refresh=true' \
 --header 'Authorization: Bearer [TOKEN]'
 ```
+
+## Testing
+To run the tests, you can use the following command:
+```bash
+php artisan test
+```
+
+## Notes
+This API implementation is a simple example and is not intended for production use. It is a demonstration of how to create a simple API with Laravel that was completed with a short limit of time.
+
+There are multiple improvements that can be made, such as:
+- Using a proper authentication system such as Sanctum or Passport
+- Adding more robust validation
+- Adding some unit tests (limited myself early on by using configs within the driver class, so unit tests were not possible). 

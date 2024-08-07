@@ -16,7 +16,7 @@ class UserTest extends TestCase
     {
         $user = User::factory()->create(['password' => Hash::make('correctpassword')]);
 
-        $response = $this->postJson('/api/authenticate', [
+        $response = $this->postJson('/api/user', [
             'email' => $user->email,
             'password' => 'wrongpassword',
         ]);
@@ -29,7 +29,7 @@ class UserTest extends TestCase
     {
         $user = User::factory()->create(['password' => Hash::make('correctpassword')]);
 
-        $response = $this->postJson('/api/authenticate', [
+        $response = $this->postJson('/api/user', [
             'email' => $user->email,
             'password' => 'correctpassword',
         ]);
@@ -46,7 +46,7 @@ class UserTest extends TestCase
         )->create();
 
         $response = $this->withHeaders(['Authorization' => 'Bearer ' . $token])
-            ->getJson('/api/profile');
+            ->getJson('/api/user');
 
         $response->assertStatus(200);
         $response->assertJsonStructure(['name', 'email']);
@@ -54,7 +54,7 @@ class UserTest extends TestCase
 
     public function test_profile_returns_unauthorized_without_token()
     {
-        $response = $this->getJson('/api/profile');
+        $response = $this->getJson('/api/user');
 
         $response->assertStatus(401);
         $response->assertJson(['message' => 'Unauthorized']);

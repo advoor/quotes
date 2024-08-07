@@ -27,7 +27,7 @@ class UserController extends Controller
         return response()->json(['token' => $apiToken]);
     }
 
-    public function profile(Request $request): JsonResponse
+    public function show(Request $request): JsonResponse
     {
         return response()->json(UserResource::make($request->user()));
     }

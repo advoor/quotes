@@ -16,10 +16,24 @@ php artisan key:generate
 php artisan migrate
 ```
 
-# Create user
+# Authentication
 To create a user and retrieve a token run the following command:
 ```bash
 php artisan app:create-user
 ```
 
 Keep the token safe, you will need it to access the API.
+
+If you need to create a new token for an existing user, you can make the following request:
+```curl
+curl --location 'http://quotes.test/api/user' \
+--header 'Accept: application/json' \
+--form 'email="test@example.com"' \
+--form 'password="Password1\!"'
+```
+
+Using the token you can validate it by making the following request:
+```curl
+curl --location 'http://quotes.test/api/user' \
+--header 'Authorization: Bearer [TOKEN]'
+```
